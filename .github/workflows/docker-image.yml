@@ -16,7 +16,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Build AIR Freshener with AudioRemaster for WASM
       run: |
-      cd ./Oxygen/sonic3air/build/_emscripten
-      docker build -t emscripten_gl
-      docker run --rm -v $(pwd):/src -u $(id -u):$(id -g) --name sonic3air_build emscripten_gl /bin/bash -c "cd /src/Oxygen/sonic3air/build/_emscripten/build; emmake cmake -DCMAKE_BUILD_TYPE=Release ..; emmake cmake --build ."
-      docker run --rm -v $(pwd):/src -u $(id -u):$(id -g) --name sonic3air_build emscripten_gl /bin/bash -c "cd /src/Oxygen/sonic3air/; python3 /emsdk/upstream/emscripten/tools/file_packager.py build/_emscripten/dist/sonic3air.data --js-output=build/_emscripten/dist/loader.js --preload config.json@/sonic3air/config.json audiodata.bin@/sonic3air/data/audiodata.bin audioremaster.bin@/sonic3air/data/audioremaster.bin enginedata.bin@/sonic3air/data/enginedata.bin gamedata.bin@/sonic3air/data/gamedata.bin data/metadata.json@/sonic3air/data/metadata.json data/font@/sonic3air/data/font saves/scripts.bin@/sonic3air/data/scripts.bin config.json@/sonic3air/config.json --use-preload-cache"
+        cd ./Oxygen/sonic3air/build/_emscripten
+        docker build -t emscripten_gl .
+        docker run --rm -v $(pwd):/src -u $(id -u):$(id -g) --name sonic3air_build emscripten_gl /bin/bash -c "cd /src/Oxygen/sonic3air/build/_emscripten/build; emmake cmake -DCMAKE_BUILD_TYPE=Release ..; emmake cmake --build ."
+        docker run --rm -v $(pwd):/src -u $(id -u):$(id -g) --name sonic3air_build emscripten_gl /bin/bash -c "cd /src/Oxygen/sonic3air/; python3 /emsdk/upstream/emscripten/tools/file_packager.py build/_emscripten/dist/sonic3air.data --js-output=build/_emscripten/dist/loader.js --preload config.json@/sonic3air/config.json audiodata.bin@/sonic3air/data/audiodata.bin audioremaster.bin@/sonic3air/data/audioremaster.bin enginedata.bin@/sonic3air/data/enginedata.bin gamedata.bin@/sonic3air/data/gamedata.bin data/metadata.json@/sonic3air/data/metadata.json data/font@/sonic3air/data/font saves/scripts.bin@/sonic3air/data/scripts.bin config.json@/sonic3air/config.json --use-preload-cache"
