@@ -14,7 +14,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Build the emscripten_gl container
+    - name: Build AIR Freshener with AudioRemaster for WASM
       run: cd ./Oxygen/sonic3air/build/_emscripten
       docker build -t emscripten_gl .
       docker run --rm -v $(pwd):/src -u $(id -u):$(id -g) --name sonic3air_build emscripten_gl /bin/bash -c "cd /src/Oxygen/sonic3air/build/_emscripten/build; emmake cmake -DCMAKE_BUILD_TYPE=Release ..; emmake cmake --build ."
