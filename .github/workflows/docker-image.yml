@@ -1,4 +1,4 @@
-name: WASM Compiler (AudioRemaster)
+name: Docker WASM AudioRemaster Compile
 
 on:
   push:
